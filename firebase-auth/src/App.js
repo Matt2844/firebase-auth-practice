@@ -1,15 +1,25 @@
 import React, { useContext } from 'react';
-import { firebaseAuth } from './provider/AuthProvider'
+import { Route, Switch, Redirect } from 'react-router-dom'
+import Signup from './components/Signup'
+import Signin from './components/Signin'
+import Home from './components/Home'
 import './App.css';
+import { firebaseAuth } from './provider/AuthProvider'
 
 function App () {
-  const { test } = useContext(firebaseAuth)
-  console.log(test)
-
+  const { token } = useContext(firebaseAuth)
+  console.log(token)
   return (
-    <div>
-      hello
-    </div>
+    <>
+      {/* switch allows switching which components render.  */}
+      <Switch>
+        {/* route allows you to render by url path */}
+
+        <Route exact path='/' render={rProps => token === null ? <Signin /> : <Home />} />
+        <Route exact path='/signin' component={Signin} />
+        <Route exact path='/signup' component={Signup} />
+      </Switch>
+    </>
   );
 }
 
