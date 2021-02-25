@@ -20,15 +20,18 @@ const Signin = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      {/* replace the div tags with a form tag */}
+    <div>
+      <form onSubmit={handleSubmit}>
+        {/* replace the div tags with a form tag */}
       Signin
       {/* make inputs  */}
-      <input onChange={handleChange} name="email" placeholder='email' value={inputs.email} />
-      <input onChange={handleChange} name="password" placeholder='password' value={inputs.password} />
-      <button>signin</button>
-      {errors.length > 0 ? errors.map(error => <p style={{ color: 'red' }}>{error}</p>) : null}
-    </form>
+        <input onChange={handleChange} name="email" placeholder='email' value={inputs.email} />
+        <input onChange={handleChange} name="password" placeholder='password' value={inputs.password} />
+        <button>signin</button>
+        {errors.length > 0 ? errors.map(error => <p style={{ color: 'red' }}>{error}</p>) : null}
+      </form>
+      <a href={'/signup'}><button>Create an account</button></a>
+    </div>
   );
 };
 
